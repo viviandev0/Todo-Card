@@ -3,7 +3,7 @@
 A high-fidelity, interactive Todo Item Card built with vanilla web technologies. This project focuses on semantic HTML, real-time data updates, and accessibility, specifically designed to meet automated testing requirements for the HNG Stage 0 frontend task.
 
 #  Links
-- **Live Demo:** 
+- **Live Demo:** https://viviandev0.github.io/Todo-Card/
 - **Repository:** https://github.com/viviandev0/Todo-Card
 
 ##  Tech Stack
