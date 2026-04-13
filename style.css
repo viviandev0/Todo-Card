@@ -1,0 +1,133 @@
+/* Reset + Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* Layout */
+section {
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card Container */
+.container {
+  background-color: rgb(26, 2, 49);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+
+/* Title */
+#test-todo-title input {
+  color: rgb(255, 205, 205);
+  margin-bottom: 40px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 32px;
+  font-weight: 300;
+}
+
+/* Description */
+#test-todo-description {
+  border: 1px solid #fff;
+  min-height: 100px;
+  width: 23vw;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+/* Date Section */
+.date {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+#test-todo-due-date,
+#test-todo-time-remaining {
+  background-color: #fff;
+  color: rgb(26, 2, 49);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+/* Progress Bar */
+.progress {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.test-todo-status {
+  height: 20px;
+  width: 70%;
+  background-color: #919191;
+  text-align: center;
+  line-height: 25px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+/* Actions */
+.actions{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Checkbox */
+.checkbox{
+  /* border: 2px white solid; */
+  margin-top: 15px;
+}
+
+/* Button */
+#test-todo-button {
+  margin-top: 10px;
+}
+
+.btn {
+  background-color: rgb(255, 207, 207);
+  color: #111314;
+  font-size: 12px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#test-todo-delete-button{
+    background-color: red;
+    color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
