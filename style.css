@@ -1,133 +1,101 @@
-/* Reset + Base */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  --bg-dark: #1a0231;
+  --low: #2ecc71;
+  --medium: #f1c40f;
+  --high: #e74c3c;
 }
 
 body {
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
-
-/* Layout */
-section {
-  background-color: #ffffff;
-  min-height: 100vh;
+  background-color: #f4f4f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
-/* Card Container */
 .container {
-  background-color: rgb(26, 2, 49);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--bg-dark);
+  color: white;
+  padding: 2rem;
   border-radius: 16px;
-  padding: 40px;
-  width: 100%;
-  max-width: 400px;
+  width: 350px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  border-left: 8px solid var(--medium); /* Default Priority */
 }
 
-.container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+/* Priority Indicators */
+.container[data-priority="low"] { border-left-color: var(--low); }
+.container[data-priority="medium"] { border-left-color: var(--medium); }
+.container[data-priority="high"] { border-left-color: var(--high); }
+
+#priority-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+}
+.container[data-priority="low"] 
+#priority-indicator { 
+  background: var(--low); 
 }
 
+.container[data-priority="medium"] #priority-indicator { background: var(--medium); }
+.container[data-priority="high"] #priority-indicator { background: var(--high); }
 
-/* Title */
-#test-todo-title input {
-  color: rgb(255, 205, 205);
-  margin-bottom: 40px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  font-size: 32px;
-  font-weight: 300;
+/* Done State */
+.container[data-status="done"] {
+  opacity: 0.7;
+}
+.container[data-status="done"] #todo-title-display {
+  text-decoration: line-through;
 }
 
-/* Description */
-#test-todo-description {
-  border: 1px solid #fff;
-  min-height: 100px;
-  width: 23vw;
-  padding: 10px;
-  margin-bottom: 30px;
-}
-
-/* Date Section */
-.date {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-#test-todo-due-date,
-#test-todo-time-remaining {
-  background-color: #fff;
-  color: rgb(26, 2, 49);
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 12px;
-}
-
-/* Progress Bar */
-.progress {
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 10px;
+/* Utilities */
+.hidden { display: none !important; }
+.collapsed {
+  max-height: 50px;
   overflow: hidden;
-  margin-bottom: 30px;
+  position: relative;
 }
-
-.test-todo-status {
-  height: 20px;
-  width: 70%;
-  background-color: #919191;
-  text-align: center;
-  line-height: 25px;
-  font-size: 12px;
-  border-radius: 10px;
-}
-/* Actions */
-.actions{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Checkbox */
-.checkbox{
-  /* border: 2px white solid; */
-  margin-top: 15px;
-}
-
-/* Button */
-#test-todo-button {
-  margin-top: 10px;
-}
-
-.btn {
-  background-color: rgb(255, 207, 207);
-  color: #111314;
-  font-size: 12px;
-  padding: 10px 15px;
+.btn-link {
+  background: none;
   border: none;
-  border-radius: 8px;
+  color: #bb86fc;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  padding: 0;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
 }
 
-#test-todo-delete-button{
-    background-color: red;
-    color: white;
+/* Form Styling */
+#edit-form input, #edit-form textarea, #edit-form select {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
 }
 
-.btn:hover {
-  opacity: 0.9;
-  transform: scale(1.03);
+.date-row { font-size: 0.8rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 4px; }
+#overdue-indicator { color: var(--high); font-weight: bold; }
+
+.status-fill {
+  background: #444;
+  height: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.7rem;
+  line-height: 20px;
 }
+.container[data-status="in-progress"] .status-fill { background: #3498db; }
+.container[data-status="done"] .status-fill { background: var(--low); }
+
+.actions { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;}
+.btn { padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer; }
+.btn-danger { background: var(--high); color: white; }
+.btn-save { background: var(--low); color: white; }
