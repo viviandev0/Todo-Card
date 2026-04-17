@@ -1,9 +1,8 @@
 # Stage 1A: Advanced Todo Card (Interactive & Stateful)
 
 ## 🔗 Project Links
-* **Live Demo:** [Insert Your Live URL Here]
-* **GitHub Repository:** [Insert Your Repo URL Here]
-
+* **Live Demo:** https://viviandev0.github.io/Advanced-Todo-Card/
+* **GitHub Repository:** https://github.com/viviandev0/Advanced-Todo-Card
 ## Overview
 This project is an evolution of the Stage 0 Todo Card. It has been transformed from a static UI component into a dynamic, state-managed application component. It features full CRUD-like editing capabilities, real-time time tracking, and synchronized status logic.
 
