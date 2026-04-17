@@ -1,23 +1,31 @@
-# HNG Stage 0: Testable Todo Item Card
+# Stage 1A: Advanced Todo Card (Interactive & Stateful)
 
-A high-fidelity, interactive Todo Item Card built with vanilla web technologies. This project focuses on semantic HTML, real-time data updates, and accessibility, specifically designed to meet automated testing requirements for the HNG Stage 0 frontend task.
+## 🔗 Project Links
+* **Live Demo:** [Insert Your Live URL Here]
+* **GitHub Repository:** [Insert Your Repo URL Here]
 
-#  Links
-- **Live Demo:** https://viviandev0.github.io/Todo-Card/
-- **Repository:** https://github.com/viviandev0/Todo-Card
+## Overview
+This project is an evolution of the Stage 0 Todo Card. It has been transformed from a static UI component into a dynamic, state-managed application component. It features full CRUD-like editing capabilities, real-time time tracking, and synchronized status logic.
 
-##  Tech Stack
-- **HTML5:** Semantic structure using `<article>`, `<time>`, and `<header>`.
-- **CSS3:** Custom styling with hover interactions, transitions, and a dark-themed "startup" aesthetic.
-- **JavaScript (ES6+):** Pure vanilla JS for real-time time-remaining calculations and DOM manipulation.
+## Key Changes from Stage 0
+* **Stateful Architecture:** The component now relies on a centralized `todoData` object to manage title, description, priority, status, and due dates.
+* **Interactive Edit Mode:** Added a dedicated edit form (`test-todo-edit-form`) that allows users to modify all task properties.
+* **Dynamic Time Tracking:** Implemented a JavaScript interval that updates the "Time Remaining" every 30 seconds and identifies "Overdue" tasks.
+* **Advanced Logic Sync:** The completion checkbox and the status dropdown are bi-directionally linked; updating one automatically reflects in the other.
 
-##  Key Decisions & Trade-offs
-- **Vanilla JS over Frameworks:** Chose a zero-dependency approach to ensure lightning-fast load times and to demonstrate core DOM manipulation skills.
-- **Dynamic Time Formatting:** Implemented a logic-based countdown that updates every 30 seconds to ensure the "Due in" or "Overdue by" status is always accurate to the current time.
-- **Testability:** Strictly mapped `data-testid` attributes to all key elements (title, description, priority, etc.) to ensure 100% compatibility with automated evaluation suites.
-- **Accessibility:** Used the `<time>` element with a `datetime` attribute as the single source of truth for date logic, ensuring screen readers and scripts both interpret the data correctly.
+## Design Decisions
+* **Priority Visuals:** Used a `border-left` accent and a colored dot indicator (`test-todo-priority-indicator`) that dynamically switches colors: Red (High), Amber (Medium), and Green (Low).
+* **Collapsible Sections:** To maintain a clean UI, the description is collapsed by default if it exceeds 50 characters, using a "Read More" toggle.
+* **Visual States:** * **Done:** Features muted opacity and a strike-through title.
+    * **In-Progress:** Uses a distinct blue background for the status fill.
+    * **Overdue:** Triggers a red "OVERDUE" badge and highlights the time text.
 
-##  Running Locally
-1. Clone the repository.
-2. Open `index.html` in your browser.
-3. To test the "Overdue" state, change the `datetime` attribute in `index.html` to a past date.
+## Accessibility Notes
+* **Semantic Structure:** Utilized `<main>`, `<section>`, and `<article>` to provide a clear document outline.
+* **Aria Roles:** The card title is linked to the section via `aria-labelledby`.
+* **Input Handling:** All form controls use standard HTML elements (`select`, `input`, `textarea`) to ensure native keyboard focus and screen reader support.
+* **Focus Management:** The application is designed to return focus to the Edit button when a user cancels or saves the edit form (though full focus trapping is a future enhancement).
+
+## Known Limitations
+* **Persistence:** Data is currently volatile; changes will reset upon page refresh as LocalStorage integration is not included in this stage.
+* **Input Validation:** While the form accepts data, it does not currently prevent empty titles or past dates.
