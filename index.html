@@ -3,83 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Todo Card</title>
+  <title>Advanced Todo Card</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <main>
     <section aria-labelledby="todo-title">
-      <article class="container" id="test-todo-card">
+      <article class="container" id="test-todo-card" data-priority="medium" data-status="pending">
+        
+        <div id="todo-view-mode">
+          <header class="header">
+            <div class="priority-row">
+              <span id="test-todo-priority" data-testid="test-todo-priority">Medium</span>
+              <div id="priority-indicator" data-testid="test-todo-priority-indicator"></div>
+            </div>
+            <h1 id="todo-title-display" data-testid="test-todo-title">Task Title</h1>
+          </header>
 
-        <!-- Header -->
-        <header class="header">
-          <div class="head">
-            <h1 id="test-todo-title"><input type="text" placeholder="Enter your to-do title"></h1>
-            <textarea name="description" id="test-todo-description" placeholder="To-do Description"></textarea>
+          <div id="collapsible-section" data-testid="test-todo-collapsible-section" class="collapsed">
+            <p id="todo-desc-display" data-testid="test-todo-description">No description provided.</p>
+          </div>
+          <button id="expand-toggle" data-testid="test-todo-expand-toggle" class="btn-link">Read More</button>
+
+          <div class="date-row">
+            <time datetime="2026-04-16T18:00:00" id="due-date" data-testid="test-todo-due-date">Due Date</time>
+            <span id="time-remaining" data-testid="test-todo-time-remaining">Calculating...</span>
+            <span id="overdue-indicator" data-testid="test-todo-overdue-indicator" class="hidden">OVERDUE</span>
           </div>
 
-          <span id="test-todo-priority" aria-label="Priority level">
-            
-          </span>
-        </header>
+          <div class="status-row">
+            <div class="progress-bar">
+              <div id="status-display" data-testid="test-todo-status" class="status-fill">Pending</div>
+            </div>
+          </div>
 
-        <!-- Date Info -->
-        <div class="date">
-            <time 
-                datetime="2026-04-16T18:00:00" 
-                data-testid="test-todo-due-date"
-                id="due-date"
-            >
-                Due Apr 16, 2026
-            </time>
-
-            <span 
-                class="time-remaining"
-                data-testid="test-todo-time-remaining"
-                id="time-remaining"
-            >
-                Calculating...
-            </span>
-
-        </div>
-
-        <!-- Progress -->
-        <div class="progress" aria-label="Task progress">
-          <div 
-            class="test-todo-status" 
-            role="progressbar"
-            aria-valuenow="70"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 70%;">
-            70%
+          <div class="actions">
+            <label class="checkbox-container">
+              <input type="checkbox" id="complete-toggle" data-testid="test-todo-complete-toggle">
+              <span class="checkbox-label">Done</span>
+            </label>
+            <div class="btn-group">
+              <button class="btn" id="edit-btn">Edit</button>
+              <button class="btn btn-danger" id="test-todo-delete-button">Delete</button>
+            </div>
           </div>
         </div>
 
-        <!-- Actions -->
-        <div  class="actions">
-          <div class="checkbox">
-            <input 
-            type="checkbox" 
-            id="complete-toggle" 
-            data-testid="test-todo-complete-toggle"
-            />
-            <label for="complete-toggle" class="checkbox-label">Done</label>
-          </div>
-
-          <div id="test-todo-button">
-            <button class="btn" id="test-todo-edit-button" type="button">
-              Edit
-            </button>
-
-            <button class="btn" id="test-todo-delete-button" type="button">
-              Delete
-            </button>
-          </div>
-
+        <form id="edit-form" data-testid="test-todo-edit-form" class="hidden">
+          <input type="text" id="edit-title" data-testid="test-todo-edit-title-input" placeholder="Title">
+          <textarea id="edit-desc" data-testid="test-todo-edit-description-input" placeholder="Description"></textarea>
           
-        </div>
+          <div class="form-group">
+            <label>Priority:</label>
+            <select id="edit-priority" data-testid="test-todo-edit-priority-select">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Status:</label>
+            <select id="status-control" data-testid="test-todo-status-control">
+              <option value="pending">Pending</option>
+              <option value="in-progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Due Date:</label>
+            <input type="datetime-local" id="edit-due-date" data-testid="test-todo-edit-due-date-input">
+          </div>
+
+          <div class="btn-group">
+            <button type="submit" class="btn btn-save" data-testid="test-todo-save-button">Save</button>
+            <button type="button" class="btn" id="cancel-btn" data-testid="test-todo-cancel-button">Cancel</button>
+          </div>
+        </form>
 
       </article>
     </section>
